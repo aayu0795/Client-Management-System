@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.shortcuts import reverse
 
 
 class CustomUser(AbstractUser):
@@ -22,3 +23,6 @@ class Customer(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse("customer_detail", kwargs={"pk": self.pk})

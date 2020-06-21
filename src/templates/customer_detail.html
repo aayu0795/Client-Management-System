@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+  <div class="container-fluid">
+    <div class="row">
+      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+        <div class="sidebar-sticky pt-3">
+          <ul class="nav flex-column">
+            <li class="nav-item mt-3">
+              <a class="nav-link " data-toggle="modal" data-target="#updatingcustomerdetails" data-whatever="@mdo">
+                  <svg class="bi bi-pencil-square mr-2" width="25px" height="25px" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                  </svg>
+                Edit <span class="sr-only">(current)</span>
+              </a>                
+
+            </li>
+            <li class="nav-item mt-3">
+              <a class="nav-link" data-toggle="modal" data-target="#confirmdelete" data-whatever="@mdo">
+                  <svg class="bi bi-trash-fill mr-2" width="25px" height="25px" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/>
+                  </svg>
+                Delete
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+          <h1 class="h2">Customer Details</h1>
+        </div>
+
+          <table class="table table-hover">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col-1">Id :</th>
+                <td>{{customer.id}}</td>
+              </tr>
+
+              <tr>
+                <th scope="col">Name :</th>
+                <td>{{customer.name}}</td>
+              </tr>
+
+              <tr>
+                <th scope="col">Age :</th>
+                <td>{{customer.age}}</td>
+              </tr>
+
+              <tr>
+                <th scope="col">Gender :</th>
+                <td>{{customer.gender}}</td>
+              </tr>
+
+              <tr>
+                <th scope="col">Contact :</th>
+                <td>{{customer.contact}}</td>
+              </tr>
+              
+            </thead>
+            <tbody>
+                {% for customer in customers %}
+                  <tr>
+                    <th scope="row">{{forloop.counter}}</th>
+                    <td>
+                      <a href="{{ customer.get_absolute_url }}" class="text-muted" >
+                        <strong>
+                          {{customer.name}}
+                        </strong>
+                      </a>
+                    </td>
+                    <td>{{customer.age}}</td>
+                    <td>{{customer.gender}}</td>
+                    <td>{{customer.contact}}</td>
+                  </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Popup form for updating details of a customer -->
+
+  <div class="modal fade" id="updatingcustomerdetails" tabindex="-1" role="dialog" aria-labelledby="updatingcustomerdetails" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add customer details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{% url 'update_customer_detail' customer.id %}" method="POST">
+                  {% csrf_token %}
+                  {{form}}
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="submit" class="btn btn-primary">Update</button>
+                  </div>
+                </form>
+            </div>
+          </div>
+      </div>
+  </div>
+
+  <!-- Popup form to confirm deletion of customer -->
+
+  <div class="modal fade" id="confirmdelete" tabindex="-1" role="dialog" aria-labelledby="confirmdelete" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Are you sure to delete the record ?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{% url 'delete_customer' customer.id %}">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                  <button type="submit" class="btn btn-primary">Yes</button>
+                </form>
+            </div>
+          </div>
+      </div>
+  </div>
+
+{% endblock content %}

@@ -8,7 +8,7 @@
       <div class="sidebar-sticky pt-3">
         <ul class="nav flex-column">
           <li class="nav-item mt-3">
-            <a class="nav-link " data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
+            <a class="nav-link " data-toggle="modal" data-target="#addingacustomer" data-whatever="@mdo">
                 <svg class="bi bi-plus-circle mr-2" width="25px" height="25px" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z"/>
                     <path fill-rule="evenodd" d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z"/>
@@ -19,7 +19,7 @@
 
           </li>
           <li class="nav-item mt-3">
-            <a class="nav-link" href="#">
+            <a class="nav-link" data-toggle="modal" data-target="#addingbatchofcustomers" data-whatever="@mdo">
                 <svg class="bi bi-file-plus mr-2" width="25px" height="25px" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path d="M9 1H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V8h-1v5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h5V1z"/>
                     <path fill-rule="evenodd" d="M13.5 1a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1H13V1.5a.5.5 0 0 1 .5-.5z"/>
@@ -37,9 +37,9 @@
         <h1 class="h2">Dashboard</h1>
         <span>Hi {{request.user.username | capfirst}}</span>
       </div>
-
-      <h2 class="mt-5">Existing customers</h2>
-        <table class="table">
+      {% if customers %}
+        <h2 class="mt-5">Existing customers</h2>
+        <table class="table table-hover">
           <thead class="thead-dark">
             <tr>
               <th scope="col">#</th>
@@ -49,15 +49,24 @@
               <th scope="col">Contact</th>
             </tr>
           </thead>
+        {% else %}
+          <h2 class="mt-5">No existing customer as of now !</h2>
+        {% endif %}
           <tbody>
-            {% for customer in customers %}
-              <tr>
-                <th scope="row">{{forloop.counter}}</th>
-                <td>{{customer.name}}</td>
-                <td>{{customer.age}}</td>
-                <td>{{customer.gender}}</td>
-                <td>{{customer.contact}}</td>
-              </tr>
+              {% for customer in customers %}
+                <tr>
+                  <th scope="row">{{forloop.counter}}</th>
+                  <td>
+                    <a href="{{ customer.get_absolute_url }}" class="text-muted" >
+                      <strong>
+                        {{customer.name}}
+                      </strong>
+                    </a>
+                  </td>
+                  <td>{{customer.age}}</td>
+                  <td>{{customer.gender}}</td>
+                  <td>{{customer.contact}}</td>
+                </tr>
               {% endfor %}
           </tbody>
         </table>
@@ -68,48 +77,57 @@
 
 <!-- Popup form for adding a customer -->
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="addingacustomer" tabindex="-1" role="dialog" aria-labelledby="addingacustomer" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Add customer details</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <form action="{% url 'add_a_customer' %}" method="POST">
-            {% csrf_token %}
-              <div class="form-group">
-                  <label for="recipient-name" class="col-form-label">Name:</label>
-                  {{ customerform.name }}
-                  <input type="text" name='name' class="form-control" id="recipient-name" required>
-              </div>
-              <div class="form-group">
-                  <label for="recipient-name" class="col-form-label">Age:</label>
-                  <input type="number" name='age' class="form-control" id="recipient-name" required>
-              </div>
-              <div class="form-group">
-                  <label for="recipient-name" class="col-form-label">Gender:</label>
-                  <select name="gender" class="form-control" required>
-                    <option value="O">Others</option>
-                    <option value="F">Female</option>
-                    <option value="M">Male</option>
-                  </select>
-
-              </div>
-              <div class="form-group">
-                  <label for="recipient-name" class="col-form-label">Contact:</label>
-                  <input type="tel" pattern="[0-9]{10}" minlength=10 maxlength=10 name='contact' class="form-control" id="recipient-name" required>
-              </div>
-              <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="submit" class="btn btn-primary">Add</button>
-              </div>
-            </form>
-        </div>
+          <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Add customer details</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <form action="{% url 'add_a_customer' %}" method="POST">
+                {% csrf_token %}
+                {{form}}
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </div>
+              </form>
+          </div>
         </div>
     </div>
 </div>
+
+<!-- Popup form for adding a batch of customers -->
+
+<div class="modal fade" id="addingbatchofcustomers" tabindex="-1" role="dialog" aria-labelledby="addingbatchofcustomers" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Choose a csv file</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <form action="{% url 'add_batch_of_customers' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{batchform}}
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </div>
+              </form>
+          </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.getElementById('id_agent').value = {{ request.user.id }}
+document.getElementById('id_agent_id').value = {{ request.user.id }}
+</script>
 
 {% endblock content %}
