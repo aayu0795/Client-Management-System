@@ -1,4 +1,5 @@
 import os
+from django.utils.translation import ugettext_lazy as _
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -11,6 +12,7 @@ ALLOWED_HOSTS = []
 AUTH_USER_MODEL = 'agent_portal.CustomUser'
 
 INSTALLED_APPS = [
+    'modeltranslation',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -28,7 +30,6 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
 
     'crispy_forms',
-
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -36,6 +37,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',    # for translation
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -80,14 +82,23 @@ DATABASES = {
 
 
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
-USE_I18N = True
-
-USE_L10N = True
-
+USE_I18N = True     # enable translation
+USE_L10N = True     # format date and numbers to lacale
 USE_TZ = True
+
+
+# def gettext(s):
+#     return s
+
+
+LANGUAGES = (
+    ('en-us', _('English')),
+    ('es', _('Spanish')),
+)
+
+
+LOCALE_PATHS = [os.path.join(BASE_DIR, 'locale')]
 
 
 STATIC_URL = '/static/'

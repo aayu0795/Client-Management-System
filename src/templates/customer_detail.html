@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
+{% load i18n %}
 
 {% block content %}
   <div class="container-fluid">
@@ -13,7 +14,7 @@
                     <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
                     <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
                   </svg>
-                Edit <span class="sr-only">(current)</span>
+                {% trans "Edit" %} <span class="sr-only">(current)</span>
               </a>                
 
             </li>
@@ -22,7 +23,7 @@
                   <svg class="bi bi-trash-fill mr-2" width="25px" height="25px" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/>
                   </svg>
-                Delete
+                {% trans "Delete" %}
               </a>
             </li>
           </ul>
@@ -31,33 +32,33 @@
 
       <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-          <h1 class="h2">Customer Details</h1>
+          <h1 class="h2">{% trans "Customer Details" %}</h1>
         </div>
 
           <table class="table table-hover">
             <thead class="thead-light">
               <tr>
-                <th scope="col-1">Id :</th>
+                <th scope="col-1">{% trans "Id" %} :</th>
                 <td>{{customer.id}}</td>
               </tr>
 
               <tr>
-                <th scope="col">Name :</th>
+                <th scope="col">{% trans "Name" %} :</th>
                 <td>{{customer.name}}</td>
               </tr>
 
               <tr>
-                <th scope="col">Age :</th>
+                <th scope="col">{% trans "Age" %} :</th>
                 <td>{{customer.age}}</td>
               </tr>
 
               <tr>
-                <th scope="col">Gender :</th>
+                <th scope="col">{% trans "Gender" %} :</th>
                 <td>{{customer.gender}}</td>
               </tr>
 
               <tr>
-                <th scope="col">Contact :</th>
+                <th scope="col">{% trans "Contact" %} :</th>
                 <td>{{customer.contact}}</td>
               </tr>
               
@@ -91,7 +92,7 @@
       <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Add customer details</h5>
+                <h5 class="modal-title" id="exampleModalLabel">{% trans "Update customer details" %}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
@@ -101,8 +102,8 @@
                   {% csrf_token %}
                   {{form}}
                   <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      <button type="submit" class="btn btn-primary">Update</button>
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">{% trans "Close" %}</button>
+                      <button type="submit" class="btn btn-primary">{% trans "Update" %}</button>
                   </div>
                 </form>
             </div>
@@ -116,15 +117,15 @@
       <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Are you sure to delete the record ?</h5>
+                <h5 class="modal-title" id="exampleModalLabel">{% trans "Are you sure to delete the record" %} ?</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <form action="{% url 'delete_customer' customer.id %}">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                  <button type="submit" class="btn btn-primary">Yes</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">{% trans "No" %}</button>
+                  <button type="submit" class="btn btn-primary">{% trans "Yes" %}</button>
                 </form>
             </div>
           </div>

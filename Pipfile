@@ -9,6 +9,7 @@ verify_ssl = true
 django = "*"
 django-allauth = "*"
 django-crispy-forms = "*"
+django-modeltranslation = "*"
 
 [requires]
 python_version = "3.8"

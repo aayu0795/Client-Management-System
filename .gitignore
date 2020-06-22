@@ -3,7 +3,7 @@ venv
 **/__pycache__
 media
 .DS_Store
-*.sqlite3
+./src/*.sqlite3
 *.venv
 *static_root/
 dump.rdb

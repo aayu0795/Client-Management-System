@@ -2,6 +2,7 @@ import io
 import csv
 from django import forms
 from .models import Customer, CustomUser
+from django.utils.translation import ugettext_lazy as _
 
 
 class CustomerForm(forms.ModelForm):
@@ -37,7 +38,7 @@ class SingleCustomerDataForm(forms.ModelForm):
 
 class BatchCustomersDataForm(forms.Form):
     agent_id = forms.IntegerField(widget=forms.HiddenInput())
-    data_file = forms.FileField()
+    data_file = forms.FileField(label=_('Data File'))
 
     def clean_data_file(self):
         f = self.cleaned_data['data_file']

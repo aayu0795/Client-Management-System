@@ -6,6 +6,7 @@ from django.views.generic import ListView, FormView, DetailView
 from .models import CustomUser, Customer
 from .forms import BatchCustomersDataForm, SingleCustomerDataForm, CustomerForm
 from django.contrib.auth.forms import AuthenticationForm
+from django.utils.translation import gettext as _
 
 
 class Homepage(View):
@@ -26,10 +27,11 @@ class Homepage(View):
 
         if user is not None:
             auth.login(request, user)
-            messages.info(request, f"You are signed in as {username}")
+            msg = _("You are signed in as")
+            messages.info(request, f"{msg} {username}")
             return redirect("/dashboard")
         else:
-            messages.info(request, "Invalid Username or Password")
+            messages.info(request, _("Invalid Username or Password"))
             return redirect('/')
 
 
@@ -76,11 +78,11 @@ def add_a_customer(request):
 
         if form.is_valid():
             form.save()
-            messages.success(request, 'New customer is added successfully')
+            messages.success(request, _('New customer is added successfully'))
             return redirect('/dashboard')
         else:
             messages.info(
-                request, 'ERROR occoured while validating the data. Please check data before entering')
+                request, _('ERROR occoured while validating the data. Please check data before entering'))
 
     return redirect('/dashboard')
 
@@ -93,11 +95,12 @@ def add_batch_of_customers(request):
         print('before checking the cond')
         if form.is_valid():
             form.process_data()
-            messages.success(request, 'New customers are added successfully')
+            messages.success(request, _(
+                'New customers are added successfully'))
             return redirect('/dashboard')
         else:
             messages.info(
-                request, 'ERROR occoured while loading data. Please check file before submitting')
+                request, _('ERROR occoured while loading data. Please check file before submitting'))
 
     return redirect('/dashboard')
 
@@ -108,12 +111,12 @@ def update_customer_detail(request, id):
 
     if form.is_valid():
         form.save()
-        messages.success(request, 'Details updated successfully')
+        messages.success(request, _('Details updated successfully'))
         return redirect(f'/customer_detail/{id}')
 
     else:
         messages.info(
-            request, 'Error while validating the updated data, please check and try again')
+            request, _('Error while validating the updated data, please check and try again'))
         return redirect(f'/customer_detail/{id}')
 
 
@@ -121,5 +124,5 @@ def delete_customer(request, id):
     customer = Customer.objects.get(id=id)
     customer.delete()
 
-    messages.success(request, 'Customer deleted successfully')
+    messages.success(request, _('Customer deleted successfully'))
     return redirect('/dashboard')
