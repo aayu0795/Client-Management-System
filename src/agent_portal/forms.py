@@ -54,7 +54,6 @@ class BatchCustomersDataForm(forms.Form):
 
         f = io.TextIOWrapper(self.cleaned_data['data_file'].file)
         reader = csv.DictReader(f)
-
         for customer in reader:
             Customer.objects.create(agent=CustomUser.objects.get(id=agent_id),
                                     name=customer['name'],

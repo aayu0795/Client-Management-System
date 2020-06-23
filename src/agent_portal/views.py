@@ -110,7 +110,6 @@ def add_batch_of_customers(request):
     if request.method == 'POST':
         form = BatchCustomersDataForm(
             request.POST, request.FILES)
-        print('before checking the cond')
         if form.is_valid():
             form.process_data()
             messages.success(request, _(
