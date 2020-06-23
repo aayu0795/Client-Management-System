@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-22 08:54+0000\n"
+"POT-Creation-Date: 2020-06-23 06:49+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,44 +50,74 @@ msgstr "Cliente"
 msgid "Customers"
 msgstr "Clientes"
 
-#: agent_portal/views.py:30
+#: agent_portal/models.py:42 agent_portal/models.py:63
+msgid "Main Heading"
+msgstr "Encabezado principal"
+
+#: agent_portal/models.py:44 agent_portal/models.py:65
+msgid "Sub Heading"
+msgstr "Subtítulo"
+
+#: agent_portal/models.py:47 agent_portal/models.py:48
+msgid "Homepage Heading"
+msgstr "Encabezado de la página principal"
+
+#: agent_portal/models.py:53 agent_portal/models.py:74
+msgid "Description"
+msgstr "Descripción"
+
+#: agent_portal/models.py:54 agent_portal/models.py:75
+msgid "Thumbnail"
+msgstr "Miniatura"
+
+#: agent_portal/models.py:57 agent_portal/models.py:58
+msgid "Homepage Body"
+msgstr "Cuerpo de la página de inicio"
+
+#: agent_portal/models.py:68 agent_portal/models.py:69
+msgid "Aboutpage Heading"
+msgstr "Encabezado de Acerca de"
+
+#: agent_portal/models.py:78 agent_portal/models.py:79
+msgid "Aboutpage Body"
+msgstr "Cuerpo de Aboutpage"
+
+#: agent_portal/views.py:36
 msgid "You are signed in as"
-msgstr "Estás registrado como"
+msgstr "Has iniciado sesión como"
 
-#: agent_portal/views.py:34
+#: agent_portal/views.py:40
 msgid "Invalid Username or Password"
-msgstr "usuario o contraseña invalido"
+msgstr "Nombre de usuario o contraseña inválidos"
 
-#: agent_portal/views.py:81
+#: agent_portal/views.py:99
 msgid "New customer is added successfully"
-msgstr "Nueva cliente se agrega con éxito"
+msgstr "El nuevo cliente se agregó con éxito"
 
-#: agent_portal/views.py:85
+#: agent_portal/views.py:103
 msgid ""
 "ERROR occoured while validating the data. Please check data before entering"
 msgstr ""
-"ERROR ocurrió al validar los datos. Por favor verifique los datos antes de "
-"ingresar"
+"ERROR ocurrió al validar los datos. Por favor verifique los datos antes de ingresar"
 
-#: agent_portal/views.py:99
+
+#: agent_portal/views.py:117
 msgid "New customers are added successfully"
-msgstr "Se agregan nuevos clientes con éxito"
+msgstr "Se agregaron nuevos clientes con éxito"
 
-#: agent_portal/views.py:103
+#: agent_portal/views.py:121
 msgid "ERROR occoured while loading data. Please check file before submitting"
-msgstr ""
-"ERROR ocurrió al cargar datos. Por favor revise el archivo antes de enviar"
+msgstr "ERROR al cargar los datos. Verifique el archivo antes de enviar"
 
-#: agent_portal/views.py:114
+#: agent_portal/views.py:132
 msgid "Details updated successfully"
-msgstr "Detalles actualizados con éxito"
+msgstr "Detalles actualizados exitosamente"
 
-#: agent_portal/views.py:119
+#: agent_portal/views.py:137
 msgid "Error while validating the updated data, please check and try again"
-msgstr ""
-"Error al validar los datos actualizados, verifique e intente nuevamente"
+msgstr "Error al validar los datos actualizados, verifique e intente nuevamente"
 
-#: agent_portal/views.py:127
+#: agent_portal/views.py:145
 msgid "Customer deleted successfully"
 msgstr "Cliente eliminado exitosamente"
 
@@ -99,98 +129,50 @@ msgstr ""
 msgid "Spanish"
 msgstr ""
 
-#: templates/about.html:7
-msgid "Quality. Stability. Innovation"
-msgstr "Calidad. Estabilidad. Innovación"
-
-#: templates/about.html:8
-msgid ""
-"Bestpeers is an integrated partner for all of your IT solution needs – from "
-"simple maintenance to product development"
-msgstr ""
-"Bestpeers es un socio integrado para todas sus necesidades de soluciones de "
-"TI, desdemantenimiento simple para el desarrollo de productos"
-
-#: templates/about.html:9
-msgid "Coming soon"
-msgstr "Próximamente"
-
-#: templates/about.html:21 templates/about.html:26 templates/about.html:31
-msgid "Heading"
-msgstr "Encabezado"
-
-#: templates/about.html:22
-msgid ""
-"Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam "
-"id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac "
-"consectetur ac, vestibulum at eros. Praesent commodo cursus magna"
-msgstr ""
-
-#: templates/about.html:27
-msgid ""
-"Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget "
-"lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. "
-"Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh"
-msgstr ""
-
-#: templates/about.html:32
-msgid ""
-"Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget "
-"quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus "
-"ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo "
-"sit amet risus"
-msgstr ""
-
-#: templates/about.html:41
-msgid "And an even wittier subheading"
-msgstr "Y un subtítulo aún más ingenioso"
-
 #: templates/account/account_inactive.html:5
 #: templates/account/account_inactive.html:8
 msgid "Account Inactive"
-msgstr "Cuenta inactiva"
+msgstr ""
 
 #: templates/account/account_inactive.html:10
 msgid "This account is inactive."
-msgstr "Esta cuenta está inactiva"
+msgstr ""
 
 #: templates/account/email.html:5 templates/account/email.html:8
 msgid "E-mail Addresses"
-msgstr "Direcciones de correo electrónico"
+msgstr ""
 
 #: templates/account/email.html:10
 msgid "The following e-mail addresses are associated with your account:"
 msgstr ""
-"Las siguientes direcciones de correo electrónico están asociadas con su "
-"cuenta:"
 
 #: templates/account/email.html:24
 msgid "Verified"
-msgstr "Verificado"
+msgstr ""
 
 #: templates/account/email.html:26
 msgid "Unverified"
-msgstr "No verificado"
+msgstr ""
 
 #: templates/account/email.html:28
 msgid "Primary"
-msgstr "Primario"
+msgstr ""
 
 #: templates/account/email.html:34
 msgid "Make Primary"
-msgstr "Hacer primario"
+msgstr ""
 
 #: templates/account/email.html:35
 msgid "Re-send Verification"
-msgstr "Verificación de reenvío"
+msgstr ""
 
 #: templates/account/email.html:36
 msgid "Remove"
-msgstr "Eliminar"
+msgstr ""
 
 #: templates/account/email.html:43
 msgid "Warning:"
-msgstr "Advertencia"
+msgstr ""
 
 #: templates/account/email.html:43
 msgid ""
@@ -200,16 +182,15 @@ msgstr ""
 
 #: templates/account/email.html:48
 msgid "Add E-mail Address"
-msgstr "Agregar dirección de correo electrónico"
+msgstr ""
 
 #: templates/account/email.html:53
 msgid "Add E-mail"
-msgstr "Agregar correo electrónico"
+msgstr ""
 
 #: templates/account/email.html:62
 msgid "Do you really want to remove the selected e-mail address?"
 msgstr ""
-"Realmente desea eliminar la dirección de correo electrónico seleccionada?"
 
 #: templates/account/email/email_confirmation_message.txt:1
 #, python-format
@@ -274,7 +255,7 @@ msgstr ""
 
 #: templates/account/email_confirm.html:20
 msgid "Confirm"
-msgstr ""
+msgstr "Confirmar"
 
 #: templates/account/email_confirm.html:27
 #, python-format
@@ -286,7 +267,7 @@ msgstr ""
 #: templates/account/login.html:7 templates/account/login.html:11
 #: templates/account/login.html:44 templates/base.html:59
 msgid "Sign In"
-msgstr "Registrarse"
+msgstr "Iniciar sesión"
 
 #: templates/account/login.html:16
 #, python-format
@@ -315,11 +296,11 @@ msgstr ""
 #: templates/account/logout.html:5 templates/account/logout.html:9
 #: templates/account/logout.html:18 templates/base.html:54
 msgid "Sign Out"
-msgstr "Desconectar"
+msgstr "Cerrar sesión"
 
 #: templates/account/logout.html:11
 msgid "Are you sure you want to sign out?"
-msgstr "¿Estás segura de que quieres cerrar sesión?"
+msgstr "¿Estás seguro de que quieres cerrar sesión?"
 
 #: templates/account/messages/cannot_delete_primary_email.txt:2
 #, python-format
@@ -348,23 +329,23 @@ msgstr ""
 
 #: templates/account/messages/logged_out.txt:2
 msgid "You have signed out."
-msgstr ""
+msgstr "Has cerrado sesión."
 
 #: templates/account/messages/password_changed.txt:2
 msgid "Password successfully changed."
-msgstr ""
+msgstr "La contraseña ha cambiado exitosamente."
 
 #: templates/account/messages/password_set.txt:2
 msgid "Password successfully set."
-msgstr ""
+msgstr "La contraseña se configuró correctamente."
 
 #: templates/account/messages/primary_email_set.txt:2
 msgid "Primary e-mail address set."
-msgstr ""
+msgstr "Conjunto de dirección de correo electrónico principal."
 
 #: templates/account/messages/unverified_primary_email.txt:2
 msgid "Your primary e-mail address must be verified."
-msgstr ""
+msgstr "Su dirección de correo electrónico principal debe ser verificada."
 
 #: templates/account/password_change.html:6
 #: templates/account/password_change.html:9
@@ -374,38 +355,44 @@ msgstr ""
 #: templates/account/password_reset_from_key_done.html:4
 #: templates/account/password_reset_from_key_done.html:7
 msgid "Change Password"
-msgstr ""
+msgstr "Cambiar contraseña"
 
 #: templates/account/password_reset.html:7
 #: templates/account/password_reset.html:11
 #: templates/account/password_reset_done.html:6
 #: templates/account/password_reset_done.html:9
 msgid "Password Reset"
-msgstr ""
+msgstr "Restablecer contraseña"
 
 #: templates/account/password_reset.html:16
 msgid ""
 "Forgotten your password? Enter your e-mail address below, and we'll send you "
 "an e-mail allowing you to reset it."
 msgstr ""
+"¿Olvidó su contraseña? Ingrese su dirección de correo electrónico a continuación y le enviaremos"
+"un correo electrónico que le permite restablecerlo."
 
 #: templates/account/password_reset.html:21
 msgid "Reset My Password"
-msgstr ""
+msgstr "Restablecer mi contraseña"
 
 #: templates/account/password_reset.html:24
 msgid "Please contact us if you have any trouble resetting your password."
-msgstr ""
+msgstr "Comuníquese con nosotros si tiene algún problema para restablecer su contraseña."
 
 #: templates/account/password_reset_done.html:15
 msgid ""
 "We have sent you an e-mail. Please contact us if you do not receive it "
 "within a few minutes."
 msgstr ""
+"Te hemos enviado un correo electrónico. Contáctanos si no lo recibes"
+"dentro de unos minutos."
+"Te hemos enviado un correo electrónico. Contáctanos si no lo recibes"
+"dentro de unos minutos."
 
 #: templates/account/password_reset_from_key.html:7
 msgid "Bad Token"
-msgstr ""
+msgstr "Token malo"
 
 #: templates/account/password_reset_from_key.html:11
 #, python-format
@@ -414,41 +401,44 @@ msgid ""
 "used.  Please request a <a href=\"%(passwd_reset_url)s\">new password reset</"
 "a>."
 msgstr ""
+"El enlace de restablecimiento de contraseña no era válido, posiblemente porque ya lo ha sido"
+"utilizado. Solicite un <a href=\"%(passwd_reset_url)s\"> restablecimiento de contraseña nueva </"
+"a>."
 
 #: templates/account/password_reset_from_key.html:17
 msgid "change password"
-msgstr ""
+msgstr "cambiar contraseña"
 
 #: templates/account/password_reset_from_key.html:20
 #: templates/account/password_reset_from_key_done.html:8
 msgid "Your password is now changed."
-msgstr ""
+msgstr "Su contraseña ahora ha cambiado."
 
 #: templates/account/password_set.html:5 templates/account/password_set.html:8
 #: templates/account/password_set.html:13
 msgid "Set Password"
-msgstr ""
+msgstr "Establecer contraseña"
 
 #: templates/account/signup.html:6
 msgid "Signup"
-msgstr "Regístrate"
+msgstr "Registrarse"
 
 #: templates/account/signup.html:10 templates/account/signup.html:19
 msgid "Sign Up"
-msgstr "Regístrate"
+msgstr "Registrarse"
 
 #: templates/account/signup_closed.html:5
 #: templates/account/signup_closed.html:8
 msgid "Sign Up Closed"
-msgstr ""
+msgstr "Registrarse cerrado"
 
 #: templates/account/signup_closed.html:10
 msgid "We are sorry, but the sign up is currently closed."
-msgstr ""
+msgstr "Lo sentimos, pero el registro está actualmente cerrado."
 
 #: templates/account/snippets/already_logged_in.html:5
 msgid "Note"
-msgstr ""
+msgstr "Nota"
 
 #: templates/account/snippets/already_logged_in.html:5
 #, python-format
@@ -460,7 +450,7 @@ msgstr ""
 #: templates/account/verified_email_required.html:5
 #: templates/account/verified_email_required.html:8
 msgid "Verify Your E-mail Address"
-msgstr ""
+msgstr "Verificar su dirección de correo electrónico"
 
 #: templates/account/verification_sent.html:11
 msgid ""
@@ -468,6 +458,9 @@ msgid ""
 "finalize the signup process. Please contact us if you do not receive it "
 "within a few minutes."
 msgstr ""
+"Le hemos enviado un correo electrónico para su verificación. Siga el enlace proporcionado a"
+"Finalice el proceso de registro. Póngase en contacto con nosotros si no lo recibe"
+"dentro de unos minutos."
 
 #: templates/account/verified_email_required.html:12
 msgid ""
@@ -482,6 +475,9 @@ msgid ""
 "verification. Please click on the link inside this e-mail. Please\n"
 "contact us if you do not receive it within a few minutes."
 msgstr ""
+"Le hemos enviado un correo electrónico para\n"
+"verificación. Haga clic en el enlace dentro de este correo electrónico. Por favor,\n"
+"contáctenos si no lo recibe en unos minutos."
 
 #: templates/account/verified_email_required.html:20
 #, python-format
@@ -489,6 +485,8 @@ msgid ""
 "<strong>Note:</strong> you can still <a href=\"%(email_url)s\">change your e-"
 "mail address</a>."
 msgstr ""
+"<strong> Nota: </strong> todavía puede <a href=\"%(email_url)s\"> cambiar su e-"
+"dirección de correo electrónico </a>."
 
 #: templates/base.html:11
 msgid "Agent Portal"
@@ -496,7 +494,7 @@ msgstr "Portal del agente"
 
 #: templates/base.html:42
 msgid "Home"
-msgstr "Hogar"
+msgstr "Inicio"
 
 #: templates/base.html:45
 msgid "About"
@@ -504,7 +502,7 @@ msgstr "Acerca de"
 
 #: templates/base.html:49 templates/dashboard.html:38
 msgid "Dashboard"
-msgstr "Tablero"
+msgstr "Panel de control"
 
 #: templates/base.html:57
 msgid "Username"
@@ -532,7 +530,7 @@ msgstr "Detalles del cliente"
 
 #: templates/customer_detail.html:41
 msgid "Id"
-msgstr "Carné de identidad"
+msgstr "Id"
 
 #: templates/customer_detail.html:95
 msgid "Update customer details"
@@ -549,7 +547,7 @@ msgstr "Actualizar"
 
 #: templates/customer_detail.html:120
 msgid "Are you sure to delete the record"
-msgstr "Está seguro de eliminar el registro"
+msgstr "¿Está seguro de eliminar el registro"
 
 #: templates/customer_detail.html:127
 msgid "No"
@@ -590,59 +588,3 @@ msgstr "Agregar"
 #: templates/dashboard.html:110
 msgid "Choose a csv file"
 msgstr "Elija un archivo csv"
-
-#: templates/homepage.html:7
-msgid "Hello, world!"
-msgstr "¡Hola, mundo!"
-
-#: templates/homepage.html:8
-msgid ""
-"This is a template for a simple marketing or informational website. It "
-"includes a large callout called a jumbotron and three supporting pieces of "
-"content. Use it as a starting point to create something more unique."
-msgstr ""
-"Esta es una plantilla para un simple sitio web de marketing o informativo. "
-"Esincluye una gran llamada llamada jumbotron y tres piezas de apoyo "
-"decontenido. Úselo como punto de partida para crear algo más único"
-
-#: templates/homepage.html:9
-msgid "Learn more"
-msgstr "Más información"
-
-#: templates/homepage.html:16
-msgid "First feature heading."
-msgstr "Título de la primera característica"
-
-#: templates/homepage.html:16
-msgid "It’ll blow your mind"
-msgstr "Te dejará boquiabierto"
-
-#: templates/homepage.html:17 templates/homepage.html:29
-#: templates/homepage.html:41
-msgid ""
-"Donec ullamcorper nulla auctor fringilla not meet the requirements. "
-"Vestibulum id ligula porta felis euismod semper. Present a great convenience "
-"running or thermal players available. Fusce dapibus, tellus ac cursus "
-"commodo."
-msgstr ""
-
-#: templates/homepage.html:28
-msgid "Oh yeah, it’s that good"
-msgstr "Oh sí, es así de bueno"
-
-#: templates/homepage.html:28
-msgid "See for yourself"
-msgstr "Compruébelo usted mismo"
-
-#: templates/homepage.html:40
-msgid "And lastly, this one."
-msgstr "Y por último, est"
-
-#: templates/homepage.html:40
-msgid "Checkmate"
-msgstr "Jaque mate"
-
-#, fuzzy
-#~| msgid "About"
-#~ msgid "About us"
-#~ msgstr "Sobre nosotras"

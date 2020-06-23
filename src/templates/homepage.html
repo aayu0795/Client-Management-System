@@ -4,47 +4,28 @@
 {% block content %}
 <div class="jumbotron">
     <div class="container">
-          <h1 class="display-3">{% trans "Hello, world!" %}</h1>
-          <p>{% trans "This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique." %}</p>
-          <p><a class="btn btn-primary btn-lg" href="#" role="button">{% trans "Learn more" %} &raquo;</a></p>
+          <h1 class="display-3">{{ main_heading }}</h1>
+          <p>{{ sub_heading }}</p>
         </div>
     </div>
       <hr class="featurette-divider">
     <div class="container">
-      <div class="row featurette">
-        <div class="col-md-7">
-          <h2 class="featurette-heading" style="padding-top:150px">{% trans "First feature heading." %} <span class="text-muted">{% trans "It’ll blow your mind" %}.</span></h2>
-          <p class="lead">{% trans "Donec ullamcorper nulla auctor fringilla not meet the requirements. Vestibulum id ligula porta felis euismod semper. Present a great convenience running or thermal players available. Fusce dapibus, tellus ac cursus commodo." %}</p>
-        </div>
-        <div class="col-md-5">
-          <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-        </div>
-      </div>
 
+      {% for heading in bodydata %}
+      <div class="container">
       <hr class="featurette-divider">
 
       <div class="row featurette">
-        <div class="col-md-7 order-md-2">
-          <h2 class="featurette-heading" style="padding-top:150px">{% trans "Oh yeah, it’s that good" %}. <span class="text-muted">{% trans "See for yourself" %}.</span></h2>
-          <p class="lead">{% trans "Donec ullamcorper nulla auctor fringilla not meet the requirements. Vestibulum id ligula porta felis euismod semper. Present a great convenience running or thermal players available. Fusce dapibus, tellus ac cursus commodo." %}</p>
-        </div>
-        <div class="col-md-5 order-md-1">
-          <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-        </div>
-      </div>
-
-      <hr class="featurette-divider">
-
-      <div class="row featurette">
-        <div class="col-md-7">
-          <h2 class="featurette-heading" style="padding-top:150px">{% trans "And lastly, this one." %}<span class="text-muted">{% trans "Checkmate" %}.</span></h2>
-          <p class="lead">{% trans "Donec ullamcorper nulla auctor fringilla not meet the requirements. Vestibulum id ligula porta felis euismod semper. Present a great convenience running or thermal players available. Fusce dapibus, tellus ac cursus commodo." %}</p>
+        <div class="col-md-7 {% if forloop.counter|divisibleby:2 == 0  %} order-md-2 {% endif %} ">
+          <p class="lead" style="padding-top:150px">{{ heading.description }}</p>
         </div>
         <div class="col-md-5">
-          <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+          <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><image href="{{ heading.thumbnail.url }}" width="100%" height="100%"/></svg>
         </div>
       </div>
     </div>
+    </div>
+    {% endfor %}
 
     <hr class="featurette-divider">        
       </div> <!-- /container -->

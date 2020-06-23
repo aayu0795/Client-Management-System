@@ -1,11 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from django.views import View
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
-from django.views.generic import ListView, FormView, DetailView
-from .models import CustomUser, Customer
+from django.views.generic import ListView, DetailView, TemplateView
+from .models import CustomUser, Customer, HomepageHeading, HomepageBody, AboutpageHeading, AboutpageBody
 from .forms import BatchCustomersDataForm, SingleCustomerDataForm, CustomerForm
-from django.contrib.auth.forms import AuthenticationForm
 from django.utils.translation import gettext as _
 
 
@@ -16,7 +15,14 @@ class Homepage(View):
 
     def get(self, request):
         # Display Homepage on get request
-        return render(request, 'homepage.html')
+        homepage_data = HomepageHeading.objects.first()
+
+        context = {
+            'main_heading': homepage_data.main_heading,
+            'sub_heading': homepage_data.sub_heading,
+            'bodydata': HomepageBody.objects.all()
+        }
+        return render(request, 'homepage.html', context)
 
     def post(self, request):
         # Validate login credentials
@@ -29,10 +35,10 @@ class Homepage(View):
             auth.login(request, user)
             msg = _("You are signed in as")
             messages.info(request, f"{msg} {username}")
-            return redirect("/dashboard")
+            return redirect(reverse("dashboard"))
         else:
             messages.info(request, _("Invalid Username or Password"))
-            return redirect('/')
+            return redirect(reverse('homepage'))
 
 
 class Dashboard(ListView):
@@ -71,6 +77,18 @@ class CustomerDetailView(DetailView):
         return context
 
 
+class AboutView(TemplateView):
+    template_name = 'about.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        aboutpageheading = AboutpageHeading.objects.first()
+        context['main_heading'] = aboutpageheading.main_heading
+        context['sub_heading'] = aboutpageheading.sub_heading
+        context['bodydata'] = AboutpageBody.objects.all()
+        return context
+
+
 def add_a_customer(request):
     # Add a new customer by validating its data
     if request.method == 'POST':
@@ -79,12 +97,12 @@ def add_a_customer(request):
         if form.is_valid():
             form.save()
             messages.success(request, _('New customer is added successfully'))
-            return redirect('/dashboard')
+            return redirect(reverse('dashboard'))
         else:
             messages.info(
                 request, _('ERROR occoured while validating the data. Please check data before entering'))
 
-    return redirect('/dashboard')
+    return redirect(reverse('dashboard'))
 
 
 def add_batch_of_customers(request):
@@ -97,12 +115,12 @@ def add_batch_of_customers(request):
             form.process_data()
             messages.success(request, _(
                 'New customers are added successfully'))
-            return redirect('/dashboard')
+            return redirect(reverse('dashboard'))
         else:
             messages.info(
                 request, _('ERROR occoured while loading data. Please check file before submitting'))
 
-    return redirect('/dashboard')
+    return redirect(reverse('dashboard'))
 
 
 def update_customer_detail(request, id):
@@ -112,12 +130,12 @@ def update_customer_detail(request, id):
     if form.is_valid():
         form.save()
         messages.success(request, _('Details updated successfully'))
-        return redirect(f'/customer_detail/{id}')
+        return redirect(reverse("customer_detail", kwargs={'pk': id}))
 
     else:
         messages.info(
             request, _('Error while validating the updated data, please check and try again'))
-        return redirect(f'/customer_detail/{id}')
+        return redirect(reverse("customer_detail", kwargs={'pk': id}))
 
 
 def delete_customer(request, id):
@@ -125,4 +143,4 @@ def delete_customer(request, id):
     customer.delete()
 
     messages.success(request, _('Customer deleted successfully'))
-    return redirect('/dashboard')
+    return redirect(reverse('dashboard'))

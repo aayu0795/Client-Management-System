@@ -1,5 +1,4 @@
 from django.urls import path
-from django.views.generic import TemplateView
 from .views import (
     Homepage,
     Dashboard,
@@ -8,12 +7,13 @@ from .views import (
     CustomerDetailView,
     update_customer_detail,
     delete_customer,
+    AboutView,
 )
 
 urlpatterns = [
     path('', Homepage.as_view(), name='homepage'),
     path('dashboard/', Dashboard.as_view(), name='dashboard'),
-    path('about/', TemplateView.as_view(template_name='about.html'), name='about'),
+    path('about/', AboutView.as_view(), name='about'),
     path('add_a_customer/', add_a_customer, name='add_a_customer'),
     path('add_batch_of_customers/', add_batch_of_customers,
          name='add_batch_of_customers'),

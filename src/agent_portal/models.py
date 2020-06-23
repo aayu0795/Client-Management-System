@@ -35,3 +35,45 @@ class Customer(models.Model):
 
     def get_absolute_url(self):
         return reverse("customer_detail", kwargs={"pk": self.pk})
+
+
+class HomepageHeading(models.Model):
+    main_heading = models.CharField(
+        _('Main Heading'), max_length=50, blank=False)
+    sub_heading = models.TextField(
+        _('Sub Heading'), max_length=500, blank=True)
+
+    class Meta:
+        verbose_name = _("Homepage Heading")
+        verbose_name_plural = _("Homepage Heading")
+
+
+class HomepageBody(models.Model):
+    description = models.TextField(
+        _('Description'), max_length=500, blank=False)
+    thumbnail = models.ImageField(_('Thumbnail'), upload_to='Homepage')
+
+    class Meta:
+        verbose_name = _("Homepage Body")
+        verbose_name_plural = _("Homepage Body")
+
+
+class AboutpageHeading(models.Model):
+    main_heading = models.CharField(
+        _('Main Heading'), max_length=50, blank=False)
+    sub_heading = models.TextField(
+        _('Sub Heading'), max_length=500, blank=True)
+
+    class Meta:
+        verbose_name = _("Aboutpage Heading")
+        verbose_name_plural = _("Aboutpage Heading")
+
+
+class AboutpageBody(models.Model):
+    description = models.TextField(
+        _('Description'), max_length=500, blank=False)
+    thumbnail = models.ImageField(_('Thumbnail'), upload_to='About')
+
+    class Meta:
+        verbose_name = _("Aboutpage Body")
+        verbose_name_plural = _("Aboutpage Body")
