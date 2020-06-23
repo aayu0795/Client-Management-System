@@ -113,7 +113,7 @@ def add_batch_of_customers(request):
         if form.is_valid():
             form.process_data()
             messages.success(request, _(
-                'New customers are added successfully'))
+                'New customers will be added shortly'))
             return redirect(reverse('dashboard'))
         else:
             messages.info(

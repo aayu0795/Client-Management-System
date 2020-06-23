@@ -30,6 +30,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
 
     'crispy_forms',
+
+    'django_crontab',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -120,3 +122,8 @@ ACCOUNT_USERNAME_REQUIRED = True
 ACCOUNT_LOGOUT_REDIRECT_URL = '/'
 
 LOGIN_REDIRECT_URL = '/dashboard'
+
+
+CRONJOBS = [
+    ('*/1 * * * *', 'agent_portal.cron.load_csv_file_to_db')
+]

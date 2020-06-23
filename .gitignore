@@ -3,12 +3,6 @@ venv
 **/__pycache__
 media
 .DS_Store
-./src/*.sqlite3
 *.venv
-*static_root/
 dump.rdb
-
-# Accept these files in the repository
-!.gitignore
-/.venv
-!.vscode
+src/db.sqlite3

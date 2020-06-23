@@ -7,11 +7,6 @@ class UserTranslationOptions(TranslationOptions):
     fields = ('first_name', 'last_name',)
 
 
-@register(Customer)
-class UserTranslationOptions(TranslationOptions):
-    fields = ('name', 'age', 'gender', 'contact',)
-
-
 @register(HomepageHeading)
 class UserTranslationOptions(TranslationOptions):
     fields = ('main_heading', 'sub_heading',)

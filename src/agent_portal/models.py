@@ -77,3 +77,9 @@ class AboutpageBody(models.Model):
     class Meta:
         verbose_name = _("Aboutpage Body")
         verbose_name_plural = _("Aboutpage Body")
+
+
+class CsvFile(models.Model):
+    agent_id = models.IntegerField(_('Agent Id'))
+    csv_file = models.FileField(_('Csv Files'), upload_to='Csv_files')
+    completed = models.BooleanField(_('Completed'), default=False)
