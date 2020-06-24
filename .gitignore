@@ -1,8 +1,0 @@
-venv
-**/*.pyc
-**/__pycache__
-media
-.DS_Store
-*.venv
-dump.rdb
-src/db.sqlite3
