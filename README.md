@@ -32,3 +32,10 @@ $ pipenv shell
 
 # Load the site at http://127.0.0.1:8000
 ```
+
+## ⭐️ Add-ons
+
+CMS supports multiple languages. English and Spanish to be specific.
+
+To see Spanish version of the website, install Locale Switcher for chrome and select spanish.
+(https://chrome.google.com/webstore/detail/locale-switcher/kngfjpghaokedippaapkfihdlmmlafcc)
