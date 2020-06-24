@@ -6,6 +6,7 @@ from django.views.generic import ListView, DetailView, TemplateView
 from .models import CustomUser, Customer, HomepageHeading, HomepageBody, AboutpageHeading, AboutpageBody
 from .forms import BatchCustomersDataForm, SingleCustomerDataForm, CustomerForm
 from django.utils.translation import gettext as _
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 class Homepage(View):
@@ -41,7 +42,7 @@ class Homepage(View):
             return redirect(reverse('homepage'))
 
 
-class Dashboard(ListView):
+class Dashboard(LoginRequiredMixin, ListView):
     model = Customer
     context_object_name = 'customers'
     template_name = 'dashboard.html'
@@ -113,7 +114,7 @@ def add_batch_of_customers(request):
         if form.is_valid():
             form.process_data()
             messages.success(request, _(
-                'New customers will be added shortly'))
+                'New customers are added successfully'))
             return redirect(reverse('dashboard'))
         else:
             messages.info(

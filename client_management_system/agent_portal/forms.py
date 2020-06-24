@@ -1,4 +1,5 @@
-
+import io
+import csv
 from django import forms
 from .models import Customer, CustomUser, CsvFile
 from django.utils.translation import ugettext_lazy as _
@@ -32,7 +33,7 @@ class SingleCustomerDataForm(forms.ModelForm):
         self.fields['age'].widget.attrs.update({'class': 'form-control'})
         self.fields['gender'].widget.attrs.update({'class': 'form-control'})
         self.fields['contact'].widget.attrs.update(
-            {'class': 'form-control', 'minLength': 10, 'maxLength': 10})
+            {'class': 'form-control', 'onkeyup': 'validnumber(this)'})
 
 
 class BatchCustomersDataForm(forms.Form):
@@ -49,7 +50,18 @@ class BatchCustomersDataForm(forms.Form):
         return f
 
     def process_data(self):
-        CsvFile.objects.create(
-            agent_id=self.cleaned_data['agent_id'],
-            csv_file=self.cleaned_data['data_file'],
-        )
+        # CsvFile.objects.create(
+        #     agent_id=self.cleaned_data['agent_id'],
+        #     csv_file=self.cleaned_data['data_file'],
+        # )
+        agent_id = self.cleaned_data['agent_id']
+        f = io.TextIOWrapper(self.cleaned_data['data_file'].file)
+        reader = csv.DictReader(f)
+
+        for customer in reader:
+            Customer.objects.create(agent=CustomUser.objects.get(id=agent_id),
+                                    name=customer['name'],
+                                    age=customer['age'],
+                                    gender=customer['gender'],
+                                    contact=customer['contact']
+                                    )

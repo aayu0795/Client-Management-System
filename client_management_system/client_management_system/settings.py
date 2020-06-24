@@ -1,3 +1,4 @@
+import django_heroku
 import os
 from django.utils.translation import ugettext_lazy as _
 
@@ -75,12 +76,12 @@ DATABASES = {
 }
 
 
-# AUTH_PASSWORD_VALIDATORS = [
-#     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',},
-#     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',},
-#     {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',},
-#     {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',},
-# ]
+AUTH_PASSWORD_VALIDATORS = [
+    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator', },
+    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator', },
+    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator', },
+    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator', },
+]
 
 
 LANGUAGE_CODE = 'en-us'
@@ -88,10 +89,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True     # enable translation
 USE_L10N = True     # format date and numbers to lacale
 USE_TZ = True
-
-
-# def gettext(s):
-#     return s
 
 
 LANGUAGES = (
@@ -122,8 +119,13 @@ ACCOUNT_USERNAME_REQUIRED = True
 ACCOUNT_LOGOUT_REDIRECT_URL = '/'
 
 LOGIN_REDIRECT_URL = '/dashboard'
+LOGIN_URL = '/'
 
 
 CRONJOBS = [
     ('*/1 * * * *', 'agent_portal.cron.load_csv_file_to_db')
 ]
+
+
+# Activate Django-Heroku.
+django_heroku.settings(locals())
