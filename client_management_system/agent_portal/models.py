@@ -23,8 +23,8 @@ class Customer(models.Model):
         _('Age'), blank=False)
     gender = models.CharField(
         _('Gender'), choices=GENDER, max_length=1, blank=False)
-    contact = models.IntegerField(
-        _('Contact'), blank=False)
+    contact = models.CharField(
+        _('Contact'), max_length=10, blank=False)
 
     class Meta:
         verbose_name = _("Customer")
