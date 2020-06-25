@@ -27,6 +27,9 @@ $ pipenv shell
 # Create a Superuser:
 (client_management_system) $ python manage.py createsuperuser
 
+# Load site with Dummy data:
+(client_management_system) $ python manage.py load_dummy_data
+
 # Confirm everything is working:
 (client_management_system) $ python manage.py runserver
 
