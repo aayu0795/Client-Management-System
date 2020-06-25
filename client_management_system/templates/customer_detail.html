@@ -103,7 +103,7 @@
                   {{form}}
                   <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">{% trans "Close" %}</button>
-                      <button type="submit" class="btn btn-primary">{% trans "Update" %}</button>
+                      <button id="addbutton"  type="submit" class="btn btn-primary">{% trans "Update" %}</button>
                   </div>
                 </form>
             </div>
@@ -131,5 +131,20 @@
           </div>
       </div>
   </div>
+
+<script>
+document.getElementById('id_agent').value = {{ request.user.id }}
+
+function validnumber(tel){
+  if (tel.value.length != 10){
+    document.getElementById('addbutton').disabled=true
+  }
+  else if(tel.value.length == 10){
+    document.getElementById('addbutton').disabled=false
+  }
+}
+
+document.getElementById('id_contact').type = 'tel';
+</script>
 
 {% endblock content %}

@@ -1,4 +1,3 @@
-import django_heroku
 import os
 from django.utils.translation import ugettext_lazy as _
 
@@ -127,7 +126,3 @@ LOGIN_URL = '/'
 CRONJOBS = [
     ('*/1 * * * *', 'agent_portal.cron.load_csv_file_to_db')
 ]
-
-
-# Activate Django-Heroku.
-django_heroku.settings(locals())
