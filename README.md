@@ -13,7 +13,7 @@ Django (3.x)
 
 ## 📖 Installation
 ```
-$ git clone https://github.com/aayu0795/Client-Management-System.git
+$ git clone https://github.com/aayushkumar0795/Client-Management-System.git
 $ cd client_management_system/
 $ pipenv install
 $ pipenv shell
