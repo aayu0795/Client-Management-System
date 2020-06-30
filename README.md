@@ -2,8 +2,6 @@
 
 CMS is an Agent portal which allow agent to add customer either manually(one at a time) or using a csv file.
 
-For Live Demo: https://client-management-system-bp.herokuapp.com/
-
 ## Requirements
 To be able to run CMS you have to meet following requirements:
 
